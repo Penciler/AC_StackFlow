@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :name, :presence => true
   validates :role, :presence => true
+  validates :email, :presence => true
 
   has_many :questions
   # 收藏的文章
