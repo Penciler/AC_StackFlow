@@ -15,7 +15,7 @@ namespace :dev do
 
   task fake_question: :environment do
     Question.destroy_all
-    10.times do |i|
+    10.times do
       Question.create!(
         subject: FFaker::Lorem.sentence,
         content: FFaker::Lorem.paragraph,
@@ -40,18 +40,32 @@ namespace :dev do
     puts "now you have #{Answer.count} Answer data"
   end
 
-  task fake_answer: :environment do
-    Answer.destroy_all
-    Question.all.each do |question|
+  task fake_answer_upvote: :environment do
+    AnswerUpvote.destroy_all
+    Answer.all.each do |answer|
       3.times do
-        question.answer.create!(
-          content: FFaker::Lorem.paragraph,
-          user: User.all.sample
+        answer.answer_upvotes.create!(
+          user: User.all.sample,
+          answer: answer
         )
       end
     end
-    puts 'have created fake answers'
-    puts "now you have #{Answer.count} Answer data"
+    puts 'have created fake answer upvotes'
+    puts "now you have #{AnswerUpvote.count} Answer upvotes data"
+  end
+
+  task fake_question_upvote: :environment do
+    QuestionUpvote.destroy_all
+    Question.all.each do |question|
+      3.times do
+        question.question_upvotes.create!(
+          user: User.all.sample,
+          question: question
+        )
+      end
+    end
+    puts 'have created fake question upvotes'
+    puts "now you have #{QuestionUpvote.count} Question upvotes data"
   end
 
 end
