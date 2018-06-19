@@ -1,4 +1,5 @@
 namespace :dev do
+
   task fake_user: :environment do
     User.destroy_all
 
