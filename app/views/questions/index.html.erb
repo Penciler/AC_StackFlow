@@ -1,0 +1,18 @@
+<div class = "container">
+    <br><br><br>
+    <table class="table table-striped">
+      <tbody>
+        <% @questions.each do |question| %>
+          <div class="col-sm-6 col-md-4">
+            <div class="user-item">                                
+              <%= link_to question.subject, question_path(question), class: "text-primary" %>&nbsp
+              
+              <%= simple_format question.content %></li>              
+              <br>                
+            </div>
+          </div>
+        <% end %>
+      </tbody>
+    </table>
+
+</div>
