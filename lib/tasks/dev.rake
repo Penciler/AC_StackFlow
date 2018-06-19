@@ -68,5 +68,4 @@ namespace :dev do
     puts 'have created fake question upvotes'
     puts "now you have #{QuestionUpvote.count} Question upvotes data"
   end
-
 end
