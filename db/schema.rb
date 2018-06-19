@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20180619123637) do
 
   create_table "answer_upvotes", force: :cascade do |t|
