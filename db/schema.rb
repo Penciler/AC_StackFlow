@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619123637) do
+ActiveRecord::Schema.define(version: 20180619120023) do
 
   create_table "answer_upvotes", force: :cascade do |t|
     t.integer "answer_id"

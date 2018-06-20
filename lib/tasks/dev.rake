@@ -20,7 +20,7 @@ namespace :dev do
       Question.create!(
         subject: FFaker::Lorem.sentence,
         content: FFaker::Lorem.paragraph,
-        user: User.all.sample
+        user_id: rand(20)
       )
     end
     puts 'have created fake questions'
