@@ -46,8 +46,8 @@ namespace :dev do
     Answer.all.each do |answer|
       3.times do
         answer.answer_upvotes.create!(
-          user_id: rand(20),
-          answer_id: rand(20)
+          user: User.all.sample,
+          answer: answer
         )
       end
     end
@@ -60,8 +60,8 @@ namespace :dev do
     Question.all.each do |question|
       3.times do
         question.question_upvotes.create!(
-          user_id: rand(20),
-          question_id: rand(20)
+          user_id: rand(20)
+          question: question
         )
       end
     end

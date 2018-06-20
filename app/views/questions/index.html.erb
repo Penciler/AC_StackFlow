@@ -4,10 +4,12 @@
       <tbody>
         <% @questions.each do |question| %>
           <div class="col-sm-6 col-md-4">
-            <div class="user-item">                                
+            <div class="user-item">          
+              <div>name: <%= question.user.name %></div>
               <%= link_to question.subject, question_path(question), class: "text-primary" %>&nbsp
-              
-              <%= simple_format question.content %></li>              
+              <div>upvotes: <%= question.question_upvotes.count %></div>
+              <%= simple_format question.content %></li>
+              <hr>              
               <br>                
             </div>
           </div>
