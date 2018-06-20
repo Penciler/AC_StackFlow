@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+
+   <%= form_for @user do |f| %>
+
+      <div class="cd-sm-4">
+        <div class="">
+          <%= f.label :name, "姓名" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="cd-sm-4">
+        <div class="">
+          <%= f.label :email, "信箱" %>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="cd-sm-4">
+        <div class="">
+          <%= "公司" %>
+        </div>
+      </div>
+
+      <div class="cd-sm-4">
+        <div class="">
+          <%= "職稱" %>
+        </div>
+      </div>
+
+      <div class="cd-sm-4">
+        <div class="">
+          <%= "個人網站連結" %>
+        </div>
+      </div>
+
+      <div class="cd-sm-4">
+        <div class="">
+          <%= "Twitter 連結" %>
+        </div>
+      </div>
+
+      <div class="cd-sm-4">
+        <div class="">
+          <%= "GitHub 連結" %>
+        </div>
+      </div>
+
+        <div class="">
+          <%= f.submit class: "btn btn-primary" %>
+        </div> 
+      </div>
+   <% end %>
+
+  </div>
+</div>
