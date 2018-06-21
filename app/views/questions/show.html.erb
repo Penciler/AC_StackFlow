@@ -1,0 +1,55 @@
+<div class = "container">
+    <br><br><br>
+    <h2> Question: </h2>
+    <table class="table table-striped">
+      <tbody>
+          <div class="col-sm-6 col-md-4">
+            <div class="user-item">          
+              <div>name: <%= @question.user.name %></div>
+              <%= link_to @question.subject, question_path(@question), class: "text-primary" %>&nbsp
+              <div>upvotes: <%= @question.question_upvotes.count %></div>
+              <%= simple_format @question.content %></li>
+              <hr>              
+              <br>                
+            </div>
+          </div>        
+      </tbody>
+    </table>
+
+
+  <div class="row col-md-8">
+    <!-- 顯示與問題相關的回答 -->
+    <h2> Answers: </h2>
+    <% @question.answers.each do |answer| %>
+    <div>
+      <h4><%= answer.user.name %></h4>
+      <p><%= simple_format answer.content %></p>
+      <div>upvotes: <%= answer.answer_upvotes.count %></div>
+      <p class="text-muted">
+        <em><%= time_ago_in_words(answer.created_at) + " ago - "   %> </em>
+
+<!-- 下面if end間為註解 -->
+<% if false %>
+        <% if current_user.admin? %>
+        <%= link_to "Delete", question_answer_path(@question, answer), method: :delete %>
+        <% end %>
+<% end %>
+      </p>
+    </div>
+    <hr>
+    <% end %>
+
+    <%= form_for [@question, @answer] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "留下回應", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
+

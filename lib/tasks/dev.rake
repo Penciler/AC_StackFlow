@@ -20,7 +20,7 @@ namespace :dev do
       Question.create!(
         subject: FFaker::Lorem.sentence,
         content: FFaker::Lorem.paragraph,
-        user_id: rand(20)
+        user_id: User.all.sample.id
       )
     end
     puts 'have created fake questions'
@@ -31,9 +31,9 @@ namespace :dev do
     Answer.destroy_all
     Question.all.each do |question|
       3.times do
-        question.answer.create!(
+        question.answers.create!(
           content: FFaker::Lorem.paragraph,
-          user_id: rand(20)
+          user_id: User.all.sample.id
         )
       end
     end
@@ -46,8 +46,8 @@ namespace :dev do
     Answer.all.each do |answer|
       3.times do
         answer.answer_upvotes.create!(
-          user_id: rand(20),
-          answer_id: rand(20)
+          user_id: User.all.sample.id,
+          answer_id: Answer.all.sample.id
         )
       end
     end
@@ -60,8 +60,8 @@ namespace :dev do
     Question.all.each do |question|
       3.times do
         question.question_upvotes.create!(
-          user_id: rand(20),
-          question_id: rand(20)
+          user_id: User.all.sample.id,
+          question_id: Question.all.sample.id
         )
       end
     end

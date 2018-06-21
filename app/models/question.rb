@@ -8,6 +8,6 @@ class Question < ApplicationRecord
   has_many :favorites
   has_many :favorite_users, through: :upvote_users, source: :user
 
-  has_many :answer
+  has_many :answers
   belongs_to :user
 end
