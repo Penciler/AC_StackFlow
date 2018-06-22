@@ -27,6 +27,20 @@ namespace :dev do
     puts "now you have #{Question.count} questions data"
   end
 
+  task fake_favorite: :environment do
+    Favorite.destroy_all
+    Question.all.each do |question|
+      rand(10).times do
+        question.favorites.create!(
+          user_id: User.all.sample.id,
+          question_id: question.id
+        )
+      end
+    end
+    puts 'have created fake question favorties'
+    puts "now you have #{Favorite.count} Question favorties data"
+  end
+
   task fake_answer: :environment do
     Answer.destroy_all
     Question.all.each do |question|
@@ -47,7 +61,7 @@ namespace :dev do
       rand(5).times do
         answer.answer_upvotes.create!(
           user_id: User.all.sample.id,
-          answer_id: Answer.all.sample.id
+          answer_id: answer.id
         )
       end
     end
