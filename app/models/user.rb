@@ -27,4 +27,9 @@ class User < ApplicationRecord
   # 被按讚的answer
   has_many :inverse_answer_upvotes, class_name: 'AnswerUpvote', foreign_key: 'answer_id'
   has_many :been_upvoted_answers, through: :inverse_answer_upbotes, source: :answer
+
+  def is_admin?
+    self.role == 'admin'
+  end
+
 end
