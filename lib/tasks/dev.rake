@@ -30,7 +30,7 @@ namespace :dev do
   task fake_answer: :environment do
     Answer.destroy_all
     Question.all.each do |question|
-      3.times do
+      2.times do
         question.answers.create!(
           content: FFaker::Lorem.paragraph,
           user_id: User.all.sample.id
@@ -44,7 +44,7 @@ namespace :dev do
   task fake_answer_upvote: :environment do
     AnswerUpvote.destroy_all
     Answer.all.each do |answer|
-      3.times do
+      rand(5).times do
         answer.answer_upvotes.create!(
           user_id: User.all.sample.id,
           answer_id: Answer.all.sample.id

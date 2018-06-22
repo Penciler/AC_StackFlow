@@ -1,5 +1,5 @@
 <div class = "container">
-    <br><br><br>
+    <br>
     <h2> Question: </h2>
     <table class="table table-striped">
       <tbody>
@@ -9,6 +9,7 @@
               <%= link_to @question.subject, question_path(@question), class: "text-primary" %>&nbsp
               <div>upvotes: <%= @question.question_upvotes.count %></div>
               <%= simple_format @question.content %></li>
+              <em><%= time_ago_in_words(@question.created_at) + " ago - "   %> </em>
               <hr>              
               <br>                
             </div>
@@ -20,7 +21,7 @@
   <div class="row col-md-8">
     <!-- 顯示與問題相關的回答 -->
     <h2> Answers: </h2>
-    <% @question.answers.each do |answer| %>
+    <% @pop_answers.each do |answer| %>
     <div>
       <h4><%= answer.user.name %></h4>
       <p><%= simple_format answer.content %></p>

@@ -12,6 +12,11 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @question.answers.each do |answer|
+      answer.upvotes_count = answer.answer_upvotes.count
+      answer.save!
+    end
+    @pop_answers = @question.answers.order(upvotes_count: :desc)
     @answer = Answer.new
   end
 
