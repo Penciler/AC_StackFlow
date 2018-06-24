@@ -12,6 +12,7 @@
               <div>ansers: <%= @question.answers.count %></div>
               <%= simple_format @question.content %></li>
               <em><%= time_ago_in_words(@question.created_at) + " ago - "   %> </em>
+              <div><%= link_to "Upvote",question_upvote_question_path, method: :post, class: "btn btn-primary" %></div>
               <hr>              
               <br>                
             </div>
