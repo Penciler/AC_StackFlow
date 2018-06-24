@@ -20,4 +20,9 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
   end
 
+  def upvote
+    @question = Question.find(params[:id])
+    @question.upvotes.create!(user:current_user)
+    redirect_back(fallback_location: question_path)
+  end
 end
