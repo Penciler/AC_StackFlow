@@ -6,7 +6,7 @@ class Question < ApplicationRecord
   has_many :upvote_users, through: :question_upvotes, source: :user
 
   has_many :favorites
-  has_many :favorite_users, through: :upvote_users, source: :user
+  has_many :favorite_users, through: :favorites, source: :user
 
   has_many :answers
   belongs_to :user
