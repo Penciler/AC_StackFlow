@@ -4,9 +4,9 @@
   <ul class="list-unstyled list-inline">
      <li>姓名:<strong><%= @user.name %></strong></li>
      <li>信箱:<strong><%= @user.email  %></strong></li>
-     <li>公司:<strong><%=  %></strong></li>
-     <li>職稱:<strong><%=  %></strong></li>
-     <li>個人網站連結:<strong><%=  %></strong></li>
-     <li>Twitter 連結:<strong><%=  %></strong></li>
-     <li>GitHub 連結:<strong><%=  %></strong></li>
+     <li>公司:<strong><%= @user.company %></strong></li>
+     <li>職稱:<strong><%= @user.title %></strong></li>
+     <li>個人網站連結:<strong><%= @user.website %></strong></li>
+     <li>Twitter 連結:<strong><%=  @user.twitter %></strong></li>
+     <li>GitHub 連結:<strong><%=  @user.github %></strong></li>
    </ul>

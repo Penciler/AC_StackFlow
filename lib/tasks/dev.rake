@@ -6,8 +6,14 @@ namespace :dev do
     20.times do
       User.create!(
         name:  FFaker::Name.first_name,
-        email: FFaker::Internet.unique.email,
-        password: '12345678'
+        email: FFaker::Internet.unique.email,      
+        password: '12345678',
+        company: FFaker::Company.name,
+        title: FFaker::Job.title,
+        website: FFaker::Internet.http_url,
+        twitter: FFaker::Internet.http_url,
+        github: FFaker::Internet.http_url
+
       )
     end
     puts 'have created fake users'
