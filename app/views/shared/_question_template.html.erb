@@ -1,9 +1,8 @@
           <div class="col-sm-6 col-md-4">
             <div class="user-item">          
               <div>name: <%= question.user.name %></div>
-              <%= link_to question.subject, question_path(question), class: "text-primary" %>&nbsp
-              <div>favorites: <%= question.favorites.count %></div>
-              <div><%= link_to "favorite", favorite_question_path(question), method: :post, class: "text-primary" %></div>
+              <%= link_to question.subject, question_path(question), class: "text-primary" %>&nbsp            
+              <div><%= link_to "favorite: " + question.favorites.count.to_s , favorite_question_path(question), method: :post, class: "text-primary" %></div>
               <div>upvotes: <%= question.question_upvotes.count %></div>
               <div>ansers: <%= question.answers.count %></div>
               <%= simple_format question.content.truncate(100) %></li>

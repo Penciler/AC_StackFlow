@@ -26,4 +26,42 @@ class QuestionsController < ApplicationController
     redirect_back(fallback_location: question_path)  # 導回上一頁
   end
 
+  def create
+    #params.require(:question).permit(:description, :user_id)
+    @user = current_user
+    #@question = Tweet.new(question_params)
+    @question = current_user.questions.build(question_params)
+
+    if @question.save
+      flash[:notice] = "question was successfully created"
+    else
+      flash[:alert] = "question was failed to create"
+    end
+    redirect_back(fallback_location: questions_path)
+  end
+
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :intro, :role, :image, :name)
+    end
+
+    def check_userself
+      if current_user!=@user
+      redirect_to restaurants_path
+      flash[:alert] = "您無編輯權限！"
+      end
+    end
+
+    def set_question
+      @tweet = Question.find(params[:id])
+    end
+
+    def question_params
+      params.require(:question).permit( :subject, :content, :user_id, :created_at, :updated_at)
+    end
+
 end
