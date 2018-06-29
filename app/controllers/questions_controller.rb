@@ -5,11 +5,6 @@ class QuestionsController < ApplicationController
     @questions = Question.all
     @user = current_user
     @recent_questions = Question.order(created_at: :desc).limit(10)
-<<<<<<< HEAD
-    @pop_questions = Question.order(favorites_count: :desc).limit(10)
-    @question = Question.new
-    #@users # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
-=======
     @pop_questions = Question.order(likes_count: :desc).limit(10)
     
     # @users # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
@@ -17,18 +12,17 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    #params.require(:question).permit(:description, :user_id)
     @user = current_user
-    @question = @user.questions.build(question_params)
-    
-    if @question.save
-      flash[:notice] = 'question was successfully created'
-      redirect_to questions_path
+    #@question = Tweet.new(question_params)
+    @question = current_user.questions.build(question_params)
 
+    if @question.save
+      flash[:notice] = "question was successfully created"
     else
-      @questions = Question.all
-      render :index
+      flash[:alert] = "question was failed to create"
     end
->>>>>>> feature/user_edit_view
+    redirect_back(fallback_location: questions_path)
   end
 
   def show
@@ -47,28 +41,13 @@ class QuestionsController < ApplicationController
     redirect_back(fallback_location: question_path)  # 導回上一頁
   end
 
-  def create
-    #params.require(:question).permit(:description, :user_id)
-    @user = current_user
-    #@question = Tweet.new(question_params)
-    @question = current_user.questions.build(question_params)
 
-    if @question.save
-      flash[:notice] = "question was successfully created"
-    else
-      flash[:alert] = "question was failed to create"
-    end
-    redirect_back(fallback_location: questions_path)
-  end
 
-<<<<<<< HEAD
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
     redirect_to(questions_path)  # questions page
   end
-
-
 
   private
     def set_user
@@ -94,11 +73,4 @@ class QuestionsController < ApplicationController
       params.require(:question).permit( :subject, :content, :user_id, :created_at, :updated_at)
     end
 
-=======
-  private
-
-  def question_params
-    params.require(:question).permit(:subject,:content)
-  end
->>>>>>> feature/user_edit_view
 end
