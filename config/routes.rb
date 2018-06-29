@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   root "pages#index"
   resources :users, only:[:show, :edit, :update]
   resources :questions, only: [ :index, :create, :destroy, :show ] do
-    resources :answers, only: [:create, :destroy]
+    resources :answers, only: [:create, :destroy] do
+    	member do
+    		post :answer_upvote
+    	end
+    end
 
     member do
     	post :question_upvote

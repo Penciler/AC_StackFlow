@@ -25,4 +25,5 @@ class QuestionsController < ApplicationController
     @question.question_upvotes.create!(user:current_user)
     redirect_back(fallback_location: question_path)
   end
+
 end
