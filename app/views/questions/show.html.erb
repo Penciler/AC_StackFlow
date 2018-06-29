@@ -2,24 +2,20 @@
     <br>
     <h2> Question: </h2>
     <table class="table table-striped">
-      <tbody>
-          <div class="col-sm-6 col-md-4">
-            <div class="user-item">          
-              <div>name: <%= @question.user.name %></div>
-              <%= link_to @question.subject, question_path(@question), class: "text-primary" %>&nbsp
-              <div>favorites: <%= @question.favorites.count %></div>
-              <div>upvotes: <%= @question.question_upvotes.count %></div>
-              <div>ansers: <%= @question.answers.count %></div>
-              <%= simple_format @question.content %></li>
-              <em><%= time_ago_in_words(@question.created_at) + " ago - "   %> </em>
-              <div><%= link_to "Upvote",question_upvote_question_path, method: :post, class: "btn btn-primary" %></div>
-              <hr>              
-              <br>                
-            </div>
-          </div>        
+      <tbody>      
+          <%= render partial: "shared/question_template", locals: {question: @question} %>      
       </tbody>
     </table>
 
+    <%= form_for [@question, @answer] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "留下回應", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
 
   <div class="row col-md-8">
     <!-- 顯示與問題相關的回答 -->
@@ -44,17 +40,6 @@
     <hr>
     <% end %>
 
-    <%= form_for [@question, @answer] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :content, placeholder: "留下回應", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-      </div>
-    <% end %>
-
   </div>
-
 </div>
 

@@ -11,15 +11,15 @@ class User < ApplicationRecord
   has_many :answers
   # 收藏的文章
   has_many :favorites
-  has_many :favorites_questions, through: :favorites, source: :questions
+  has_many :favorites_questions, through: :favorites, source: :question
 
   # 按別人讚的question
   has_many :question_upvotes
-  has_many :upvoted_questions, through: :question_upvotes, source: :questions
+  has_many :upvoted_questions, through: :question_upvotes, source: :question
 
   # 按別人讚的answer
   has_many :answer_upvotes
-  has_many :upvoted_answers, through: :answer_upvotes, source: :answers
+  has_many :upvoted_answers, through: :answer_upvotes, source: :answer
 
   # 被按讚的question
   has_many :inverse_question_upvotes, class_name: 'QuestionUpvote', foreign_key: 'question_id'

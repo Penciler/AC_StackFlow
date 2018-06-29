@@ -1,10 +1,8 @@
 <div class = "container">
-    <%= render partial: "form" %>
-    <hr>
     <br>
     <table class="table table-striped">
       <tbody>
-        <% @questions.each do |question| %>
+        <% @favorite_questions.each do |question| %>
           <%= render partial: "shared/question_template", locals: {question: question} %>
         <% end %>
       </tbody>
