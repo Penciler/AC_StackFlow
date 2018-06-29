@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 	def show
 		@user=User.find(params[:id])
+		if @user.answers != nil
+			@user_answer=@user.answers.order(upvotes_count: :asc).last
+		end
+
 	end
 
 	def edit

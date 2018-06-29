@@ -13,3 +13,12 @@
 
    <div>Question count: <%=@user.questions.count%></div>
    <div>Answer count: <%=@user.answers.count%></div>
+
+   <%if @user_answer != nil %>
+   		<div>Answer with the most upvote: <%=@user_answer.upvotes_count%></div>
+   <% else %>
+   		<div>Answer with the most upvote: 0</div>
+   <%end%>
+
+
+  
