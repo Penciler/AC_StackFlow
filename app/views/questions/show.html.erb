@@ -7,6 +7,15 @@
       </tbody>
     </table>
 
+    <%= form_for [@question, @answer] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "留下回應", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
 
   <div class="row col-md-8">
     <!-- 顯示與問題相關的回答 -->
@@ -30,17 +39,6 @@
     <hr>
     <% end %>
 
-    <%= form_for [@question, @answer] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :content, placeholder: "留下回應", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-      </div>
-    <% end %>
-
   </div>
-
 </div>
 

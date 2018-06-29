@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   resources :questions, only: [ :index, :create, :destroy, :show ] do
     member do
       post :favorite
-      post :unfavorite 
-      #post :create
     end
     resources :answers, only: [ :create, :destroy ]
   end

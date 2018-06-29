@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :email, :presence => true
 
   has_many :questions
+  has_many :answers
   # 收藏的文章
   has_many :favorites
   has_many :favorites_questions, through: :favorites, source: :question
