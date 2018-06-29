@@ -7,7 +7,13 @@
               <div>ansers: <%= question.answers.count %></div>
               <%= simple_format question.content.truncate(100) %></li>
               <em><%= time_ago_in_words(question.created_at) + " ago - "   %> </em>
+              <% if current_user == question.user %>
+                  <div><%= link_to "[delete question]", question_path(question), method: :delete, class: "text-primary" %></div>
+              <% end %>
               <hr>              
               <br>                
             </div>
           </div>
+
+
+

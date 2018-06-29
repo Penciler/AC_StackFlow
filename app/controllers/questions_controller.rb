@@ -11,13 +11,13 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
-    @question.answers.each do |answer|
-      answer.upvotes_count = answer.answer_upvotes.count
-      answer.save!
-    end
-    @pop_answers = @question.answers.order(upvotes_count: :desc)
-    @answer = Answer.new
+      @question = Question.find(params[:id])
+      @question.answers.each do |answer|
+        answer.upvotes_count = answer.answer_upvotes.count
+        answer.save!
+      end
+      @pop_answers = @question.answers.order(upvotes_count: :desc)
+      @answer = Answer.new
   end
 
   def favorite
@@ -40,6 +40,14 @@ class QuestionsController < ApplicationController
     redirect_back(fallback_location: questions_path)
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to(questions_path)  # questions page
+  end
+
+
+
   private
     def set_user
       @user = User.find(params[:id])
@@ -57,7 +65,7 @@ class QuestionsController < ApplicationController
     end
 
     def set_question
-      @tweet = Question.find(params[:id])
+      @question = Question.find(params[:id])
     end
 
     def question_params
