@@ -30,6 +30,7 @@
       <div>upvotes: <%= answer.answer_upvotes.count %></div>
       <p class="text-muted">
         <em><%= time_ago_in_words(answer.created_at) + " ago - "   %> </em>
+      <div><%= link_to "Upvote",answer_upvote_question_answer_path(@question, answer), method: :post, class: "btn btn-primary" %></div>
 
 <!-- 下面if end間為註解 -->
 <% if false %>

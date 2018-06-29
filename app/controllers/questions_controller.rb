@@ -20,4 +20,6 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
   end
 
+
+
 end
