@@ -1,5 +1,7 @@
 namespace :dev do
 
+  task all: [:fake_user, :fake_question, :fake_favorite, :fake_answer, :fake_answer_upvote, :fake_question_upvote]
+
   task fake_user: :environment do
     User.destroy_all
 
