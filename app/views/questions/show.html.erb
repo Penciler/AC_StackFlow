@@ -6,15 +6,18 @@
           <%= render partial: "shared/question_template", locals: {question: @question} %>      
       </tbody>
     </table>
-
-    <%= form_for @answer, url: answers_question_path, :html => { class: 'answer' } do |f| %>
-      <div class="form-group">
-        <%= f.text_area :content, placeholder: "What's on your answer?", class: "form-control" %>
-        <%= f.hidden_field :question_id, value: @question.id %>
-      </div>
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary pull-right" %>          
-      </div>
+    <% if user_signed_in? %>
+      <%= form_for @answer, url: answers_question_path, :html => { class: 'answer' } do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, placeholder: "What's on your answer?", class: "form-control" %>
+          <%= f.hidden_field :question_id, value: @question.id %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary pull-right" %>          
+        </div>
+      <% end %>
+    <% else %>
+      <h4><%= "You need to login to answer this questions." %></h4>
     <% end %>
 
   <div class="row col-md-8">

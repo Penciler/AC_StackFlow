@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       post :favorite
       post 'answers'     => 'answers#create'
     end
-    #resources :answers, only: [ :create, :destroy ]
+    #resources :answers, only: [ :create, :destroy ] 會抓不到question_id, 不知為何
   end
   resources :favorites, only:[ :index ]
 
