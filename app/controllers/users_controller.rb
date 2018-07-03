@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	def show
 		@user=User.find(params[:id])
 		if @user.answers != nil
-			@user_answer=@user.answers.order(upvotes_count: :asc).last
+			@user_answer=@user.answers.order(answer_upvotes_count: :asc).last
 		end
 
 		if @user.questions != nil
