@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 			@user_answer=@user.answers.order(upvotes_count: :asc).last
 		end
 
+		if @user.questions != nil
+			@user_question=@user.questions.order(question_upvotes_count: :asc).last
+		end
+
 	end
 
 	def edit
