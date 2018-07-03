@@ -83,7 +83,7 @@ namespace :dev do
       3.times do
         question.question_upvotes.create!(
           user_id: User.all.sample.id,
-          question_id: Question.all.sample.id
+          question_id: question.id
         )
       end
     end
