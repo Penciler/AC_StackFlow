@@ -34,3 +34,7 @@
       <div>Total upvotes: 0</div>
    <%end%>  
 
+   <% if @user==current_user %>
+    <div><%= link_to "Edit profile",edit_user_path, class: "btn btn-primary" %></div>
+   <% end %>
+
