@@ -1,13 +1,15 @@
-<div class = "container">
+
+
+  <section id="quick_question_form">
+    <div class ="container">
     <%= render partial: "form" %>
-    <hr>
-    <br>
-    <table class="table table-striped">
-      <tbody>
+    </div>
+  </section>
+
+<div class = "container">
+
         <% @questions.each do |question| %>
           <%= render partial: "shared/question_template", locals: {question: question} %>
         <% end %>
-      </tbody>
-    </table>
 
 </div>

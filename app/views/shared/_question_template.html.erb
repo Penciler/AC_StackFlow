@@ -1,20 +1,24 @@
-          <div class="col-sm-6 col-md-4">
-            <div class="user-item">          
-              <div>name: <%= question.user.name %></div>
-              <%= link_to question.subject, question_path(question), class: "text-primary" %>&nbsp            
-              <div><%= link_to "favorite: " + question.favorites.count.to_s , favorite_question_path(question), method: :post, class: "text-primary" %></div>
-              <div>upvotes: <%= question.question_upvotes.count %></div>
-              <div>ansers: <%= question.answers.count %></div>
-              <%= simple_format question.content.truncate(100) %></li>
-              <em><%= time_ago_in_words(question.created_at) + " ago - "   %> </em>
-              <div><%= link_to "Upvote",question_upvote_question_path(question), method: :post, class: "btn btn-primary" %></div>
-              <% if current_user == question.user %>
-                  <div><%= link_to "[delete question]", question_path(question), method: :delete, class: "text-primary" %></div>
-              <% end %>
-              <hr>              
-              <br>                
-            </div>
-          </div>
 
+  <div class="question">
+           
+      <div class="question_status_area">
+        <div><%= icon('fas', 'fa-heart') %>  <%= link_to "#{question.favorites.count}"   , favorite_question_path(question), method: :post, class: "text-primary" %><br>like</div>
+        <div><%= icon('fas', 'fa-reply') %>  <%= question.answers.count %> <br>answer</div>
+        <div><%= icon('fas', 'fa-caret-up') %>   <%= link_to "#{question.question_upvotes.count}",question_upvote_question_path(question), method: :post, class: "text-primary" %><br>upvote</div>
+   
+      </div>
+      <div class="question_body_area">
+        <div class="question_title"><%= link_to question.subject, question_path(question), class: "text-primary" %>  </div>        
+        <div class="question_descript"><%= simple_format question.content.truncate(100) %></div>
+        <div class="author_info">asked <%= time_ago_in_words(question.created_at) %> ago - by <%= link_to question.user.name, user_path(question.user) %> </div>
+       
+      </div>
+       <% if current_user == question.user %>
+          <div class="operation"><%= link_to "delete", question_path(question), method: :delete, class: "btn btn-default" %></div>
+        <% end %>
+      <div class="clearfix">             
+                      
+  </div>
+  <hr>
 
 

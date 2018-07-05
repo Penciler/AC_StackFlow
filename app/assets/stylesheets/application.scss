@@ -13,3 +13,65 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+#quick_question_form
+{
+    width:100%;
+    padding:30px;
+    background-color:#BDC0BA;
+
+}
+
+.notice, .alert
+{
+    display: none;
+}
+
+.question
+{
+
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.question_status_area
+{
+    width:20%;
+    float:left;
+}
+
+.question_status_area div
+{
+    text-align: center;
+    height:75px;
+    width:75px;
+    float:left;
+}
+
+
+.question_body_area
+{
+    padding-left:30px;
+    width:80%;
+    float:left;
+}
+
+.question_title
+{
+    font-size:2em;
+}
+
+.author_info, .operation
+{
+    float: right;
+}
+
+.question_descript
+{
+    
+}

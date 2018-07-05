@@ -13,12 +13,12 @@
 
        <div class="form-group">
         <%= f.label :subject, "Subject" %>
-        <%= f.text_field :subject %>
+        <%= f.text_field :subject , class: "form-control" %>
       </div>
       
       <div class="form-group">
-      <%= f.label :content, "Content" %>
-      <%= f.text_area :content %>
+      <%= f.label :content, "Content"  %>
+      <%= f.text_area :content,class: "form-control"  %>
       </div>
 
       <%= f.submit class: "btn btn-primary" %>
