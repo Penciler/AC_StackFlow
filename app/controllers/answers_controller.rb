@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :answer_params, :only => [:create ]
+
+  before_action :authenticate_user!, only: [:answer_upvote,:create,:destroy]
 
   def answer_upvote
     @answer = Answer.find(params[:id])
