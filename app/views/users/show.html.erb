@@ -38,7 +38,7 @@
    <% elsif @user_answer != nil%>
       <div>Total upvotes: <%=@user_answer.answer_upvotes_count%></div>
    <% else %>
-      <div>Total upvotes: 0</div>
+      <div>Total upvotes: <%=@user_question.question_upvotes_count%></div>
    <%end%>  
 
    <% if @user==current_user %>
