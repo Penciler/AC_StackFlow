@@ -1,5 +1,4 @@
 
-
 <div class="container">
 
 <h2><%= @user.name %></h2>
@@ -16,9 +15,9 @@
    <div>Answer count: <%=@user.answers.count%></div>
 
    <%if @user_answer != nil %>
-   		<div>Answer with the most upvote: <%=@user_answer.answer_upvotes_count%></div>
+      <div>Answer with the most upvote: <%=@user_answer.answer_upvotes_count%></div>
    <% else %>
-   		<div>Answer with the most upvote: 0</div>
+      <div>Answer with the most upvote: 0</div>
    <%end%>
 
 
@@ -44,5 +43,3 @@
    <% if @user==current_user %>
     <div><%= link_to "Edit profile",edit_user_path, class: "btn btn-primary" %></div>
    <% end %>
-
-

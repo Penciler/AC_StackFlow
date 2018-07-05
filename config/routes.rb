@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "questions#index"
   resources :users, only:[:show, :edit, :update]
   resources :questions, only: [ :index, :create, :destroy, :show ] do
-    resources :answers, only: [:create, :destroy] do
+    resources :answers, only: [ :destroy ] do
     	member do
     		post :answer_upvote
     	end
@@ -19,10 +19,7 @@ Rails.application.routes.draw do
       post :favorite
       post 'answers'     => 'answers#create'
     end
-<<<<<<< HEAD
-=======
     #resources :answers, only: [ :create, :destroy ] 會抓不到question_id, 不知為何
->>>>>>> feature/answer_related_function
   end
   resources :favorites, only:[ :index ]
 
