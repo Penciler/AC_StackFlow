@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :favorite,:question_upvote]
 
   def index
     @questions = Question.all.order(created_at: :desc)
