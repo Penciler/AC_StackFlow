@@ -2,9 +2,9 @@
   <div class="question">
            
       <div class="question_status_area">
-        <div><%= icon('fas', 'fa-heart') %>  <%= link_to "#{question.favorites.count}"   , favorite_question_path(question), method: :post, class: "text-primary" %><br>like</div>
-        <div><%= icon('fas', 'fa-reply') %>  <%= question.answers.count %> <br>answer</div>
-        <div><%= icon('fas', 'fa-caret-up') %>   <%= link_to "#{question.question_upvotes.count}",question_upvote_question_path(question), method: :post, class: "text-primary" %><br>upvote</div>
+      <%= link_to favorite_question_path(question), method: :post, class: "favorite click text-primary" do%> <div><%= icon('fas', 'heart') %> <%= question.favorites.count %><br>favorites</div><%end%>
+      <%= link_to question_path(question), class: "click text-primary" do %>  <div><%= icon('fas', 'reply') %>  <%= question.answers.count %> <br>answers</div> <%end%>
+      <%= link_to question_upvote_question_path(question), method: :post, class: "click text-primary" do %><div><%= icon('fas', 'caret-up') %>   <%=question.question_upvotes.count %><br>upvotes</div><%end%>
    
       </div>
       <div class="question_body_area">
@@ -13,12 +13,11 @@
         <div class="author_info">asked <%= time_ago_in_words(question.created_at) %> ago - by <%= link_to question.user.name, user_path(question.user) %> </div>
        
       </div>
+
        <% if current_user == question.user %>
           <div class="operation"><%= link_to "delete", question_path(question), method: :delete, class: "btn btn-default" %></div>
         <% end %>
-      <div class="clearfix">             
+      <div class="clearfix"></div>
                       
   </div>
-  <hr>
-
 

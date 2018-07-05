@@ -43,6 +43,13 @@ h2
     margin-right:10px;
 }
 
+.actions
+{
+    float:right;
+
+}
+
+
 .question
 {
 
@@ -72,6 +79,17 @@ h2
     float:left;
 }
 
+.question
+{
+    border-bottom: 1px solid #CFCFCF;
+}
+
+
+.question:hover
+{
+    background-color:#FAFAFA;
+}
+
 .question_title
 {
     font-size:2em;
@@ -80,9 +98,25 @@ h2
 .author_info, .operation
 {
     float: right;
+
+}
+.author_info
+{
+    margin-right:30px;
 }
 
 .question_descript
 {
     
+}
+
+.favorite div:hover
+{
+    color:#CB4042;
+   
+}
+
+.click div:hover
+{
+    -webkit-transform: scale(1.1);
 }
