@@ -19,6 +19,12 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+
+h2
+{
+    font-size:1.5em;
+}
+
 #quick_question_form
 {
     width:100%;
@@ -27,10 +33,19 @@
 
 }
 
-.notice, .alert
+
+
+.btn
 {
-    display: none;
+    margin-right:10px;
 }
+
+.actions
+{
+    float:right;
+
+}
+
 
 .question
 {
@@ -61,6 +76,17 @@
     float:left;
 }
 
+.question
+{
+    border-bottom: 1px solid #CFCFCF;
+}
+
+
+.question:hover
+{
+    background-color:#FAFAFA;
+}
+
 .question_title
 {
     font-size:2em;
@@ -69,9 +95,25 @@
 .author_info, .operation
 {
     float: right;
+
+}
+.author_info
+{
+    margin-right:30px;
 }
 
 .question_descript
 {
     
+}
+
+.favorite div:hover
+{
+    color:#CB4042;
+   
+}
+
+.click div:hover
+{
+    -webkit-transform: scale(1.1);
 }
