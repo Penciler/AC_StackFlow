@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+
   before_action :authenticate_user!, only: [:answer_upvote,:create,:destroy]
 
   def answer_upvote
@@ -10,16 +11,17 @@ class AnswersController < ApplicationController
   def create
     #params.require(:answer).permit(:description, :user_id)
     @user = current_user
-    #@answer = Tweet.new(answer_params)
+    @question = Question.find(params[:id])
     @answer = current_user.answers.build(answer_params)
-    @question = @answer.question
 
     if @answer.save
       flash[:notice] = "answer was successfully created"
     else
       flash[:alert] = "answer was failed to create"
+      flash[:alert] = @answer.errors.full_messages
+      #flash[:alert] = @question.id
     end
-    redirect_back(question_path(@question))
+    redirect_back(fallback_location: questions_path)
   end
 
   def destroy
@@ -38,18 +40,7 @@ class AnswersController < ApplicationController
       params.require(:user).permit(:email, :intro, :role, :image, :name)
     end
 
-    def check_userself
-      if current_user!=@user
-      redirect_to restaurants_path
-      flash[:alert] = "您無編輯權限！"
-      end
-    end
-
-    def set_question
-      @question = Question.find(params[:id])
-    end
-
-    def answer_params
+    def answer_params #還是不太懂require的功能要確定一下
       params.require(:answer).permit( :content, :user_id, :question_id, :created_at, :updated_at)
     end
 

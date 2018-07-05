@@ -1,42 +1,48 @@
 <div class = "container">
-
-    <h2> Question </h2>
-      <%= render partial: "shared/question_template", locals: {question: @question} %>      
-
-    <h2> leave a answer </h2>
-    <%= form_for [@question, @answer] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :content, placeholder: "your answer here...", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-      </div>
+    <br>
+    <h2> Question: </h2>
+    <table class="table table-striped">
+      <tbody>
+          <%= render partial: "shared/question_template", locals: {question: @question} %>      
+      </tbody>
+    </table>
+    <% if user_signed_in? %>
+      <%= form_for @answer, url: answers_question_path, :html => { class: 'answer' } do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, placeholder: "What's on your answer?", class: "form-control" %>
+          <%= f.hidden_field :question_id, value: @question.id %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary pull-right" %>          
+        </div>
+      <% end %>
+    <% else %>
+      <h4><%= "You need to login to answer this questions." %></h4>
     <% end %>
 
   <div class="row col-md-8">
     <!-- 顯示與問題相關的回答 -->
-    <h2> Answers</h2>
-
+    <h2> Answers: </h2>
     <% @pop_answers.each do |answer| %>
     <div>
-      <div><%= answer.answer_upvotes.count %> upvotes</div>
-      <div><%= link_to "Upvote",answer_upvote_question_answer_path(@question, answer), method: :post, class: "btn btn-primary" %></div>
-     
-      <p><%= simple_format answer.content %></p>    
-      <em><%= time_ago_in_words(answer.created_at) + " ago - "   %> by <%= link_to answer.user.name, user_path(answer.user) %> </em>
-      
-        <!-- 下面if end間為註解 -->
-        <% if false %>
-                <% if current_user.admin? %>
-                <%= link_to "Delete", question_answer_path(@question, answer), method: :delete %>
-                <% end %>
+      <h4><%= answer.user.name %></h4>
+      <p><%= simple_format answer.content %></p>
+      <div>upvotes: <%= answer.answer_upvotes.count %></div>
+      <p class="text-muted">
+        <em><%= time_ago_in_words(answer.created_at) + " ago - "   %> </em>
+
+<!-- 下面if end間為註解 -->
+<% if false %>
+        <% if current_user.admin? %>
+        <%= link_to "Delete", question_answer_path(@question, answer), method: :delete %>
         <% end %>
-    
+<% end %>
+      </p>
     </div>
     <hr>
     <% end %>
 
+    <div class="p-3 mb-2 bg-info text-white"><%= flash[:notice] %></div>
+    <div class="p-3 mb-2 bg-danger text-white"><%= flash[:alert] %></div>
   </div>
 </div>
-
