@@ -2,7 +2,12 @@
 
   <section id="quick_question_form">
     <div class ="container">
-    <%= render partial: "form" %>
+      <% if user_signed_in? %>
+        <h4><%= "What's your question?" %></h4>
+        <%= render partial: "form" %>
+      <% else %>
+      <h4><%= "You need to login to ask questions." %></h4>
+      <% end %>
     </div>
   </section>
 
