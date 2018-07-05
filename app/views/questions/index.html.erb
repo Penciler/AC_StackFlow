@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class = "container">
   <% if user_signed_in? %>
     <%= render partial: "form" %>
@@ -7,10 +6,7 @@
     <br>
     <table class="table table-striped">
       <tbody>
-=======
 
-
->>>>>>> 57175d7f8ebeb5c53460ea6849243b0de1b465b4
         <% @questions.each do |question| %>
           <%= render partial: "shared/question_template", locals: {question: question} %>
         <% end %>
