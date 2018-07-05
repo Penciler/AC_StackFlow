@@ -1,68 +1,68 @@
 <div class="container">
   <div class="row">
+  <div id="registration_form">
+  <h2> Edit User Profile </h2>
 
    <%= form_for @user do |f| %>
 
       <div class="cd-sm-4">
-        <div class="">
-          <%= f.label :name, "姓名" %>
+        <div>
+          <%= f.label :name, "Name" %>
           <%= f.text_field :name, class: "form-control" %>
         </div>
       </div>
 
       <div class="cd-sm-4">
-        <div class="">
-          <%= f.label :email, "信箱" %>
+        <div>
+          <%= f.label :email, "e-mail" %>
           <%= f.text_field :email, class: "form-control" %>
         </div>
       </div>
 
       <div class="cd-sm-4">
-        <div class="">
-          <%= "公司" %>
-          <%= f.label :company, "公司" %>
+        <div>
+         
+          <%= f.label :company, "Company" %>
           <%= f.text_field :company, class: "form-control" %>
         </div>
       </div>
 
       <div class="cd-sm-4">
-        <div class="">
-          <%= "職稱" %>
-          <%= f.label :title, "職稱" %>
+        <div>
+
+          <%= f.label :title, "Title" %>
           <%= f.text_field :title, class: "form-control" %>
         </div>
       </div>
 
       <div class="cd-sm-4">
-        <div class="">
-          <%= "個人網站連結" %>
-          <%= f.label :website, "website" %>
+        <div>
+          <%= f.label :website, "Web Site" %>
           <%= f.text_field :website, class: "form-control" %>
         </div>
       </div>
 
       <div class="cd-sm-4">
-        <div class="">
-          <%= "Twitter 連結" %>
-          <%= f.label :twitter, "twitter" %>
+        <div>
+          <%= f.label :twitter, "Twitter" %>
           <%= f.text_field :twitter, class: "form-control" %>
         </div>
       </div>
 
 
       <div class="cd-sm-4">
-        <div class="">
-          <%= "GitHub 連結" %>
-           <%= f.label :github, "github" %>
+        <div>
+           <%= f.label :github, "GitHub" %>
           <%= f.text_field :github, class: "form-control" %>
         </div>
       </div>
-
-        <div class="">
-          <%= f.submit class: "btn btn-primary" %>
+      <hr>
+        <div>
+        <%= link_to "Back", :back, class: "btn btn-default" %>
+          <%= f.submit class: "actions btn btn-primary" %>
         </div> 
       </div>
    <% end %>
-
+    </div>
   </div>
 </div>

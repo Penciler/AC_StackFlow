@@ -19,6 +19,12 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+
+h2
+{
+    font-size:1.5em;
+}
+
 #quick_question_form
 {
     width:100%;
@@ -30,6 +36,11 @@
 .notice, .alert
 {
     display: none;
+}
+
+.btn
+{
+    margin-right:10px;
 }
 
 .question
