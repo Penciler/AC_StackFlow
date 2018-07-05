@@ -1,5 +1,7 @@
 <div class = "container">
+  <% if user_signed_in? %>
     <%= render partial: "form" %>
+  <% end %>   
     <hr>
     <br>
     <table class="table table-striped">
