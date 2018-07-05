@@ -27,7 +27,8 @@
     <div>
       <h4><%= answer.user.name %></h4>
       <p><%= simple_format answer.content %></p>
-      <div>upvotes: <%= answer.answer_upvotes.count %></div>
+      <div> <%= link_to "Upvote", answer_upvote_question_answer_path(@question,answer), method: :post, class: "btn btn-primary" %>
+       <%= answer.answer_upvotes.count %> upvotes </div>
       <p class="text-muted">
         <em><%= time_ago_in_words(answer.created_at) + " ago - "   %> </em>
 
