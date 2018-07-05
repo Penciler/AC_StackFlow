@@ -17,7 +17,12 @@ Rails.application.routes.draw do
 
     member do
       post :favorite
+      post 'answers'     => 'answers#create'
     end
+<<<<<<< HEAD
+=======
+    #resources :answers, only: [ :create, :destroy ] 會抓不到question_id, 不知為何
+>>>>>>> feature/answer_related_function
   end
   resources :favorites, only:[ :index ]
 

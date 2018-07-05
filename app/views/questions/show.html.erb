@@ -1,5 +1,4 @@
 <div class = "container">
-<<<<<<< HEAD
     <br>
     <h2> Question: </h2>
     <table class="table table-striped">
@@ -17,22 +16,7 @@
           <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
         </div>
       <% end %>
-=======
 
-    <h2> Question </h2>
-      <%= render partial: "shared/question_template", locals: {question: @question} %>      
-
-    <h2> leave a answer </h2>
-    <%= form_for [@question, @answer] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :content, placeholder: "your answer here...", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-      </div>
->>>>>>> 57175d7f8ebeb5c53460ea6849243b0de1b465b4
-    <% end %>
 
   <div class="row col-md-8">
     <!-- 顯示與問題相關的回答 -->
@@ -57,6 +41,8 @@
     <hr>
     <% end %>
 
+    <div class="p-3 mb-2 bg-info text-white"><%= flash[:notice] %></div>
+    <div class="p-3 mb-2 bg-danger text-white"><%= flash[:alert] %></div>
   </div>
 </div>
 
