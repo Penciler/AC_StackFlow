@@ -2,10 +2,17 @@
     <br>
     <table class="table table-striped">
       <tbody>
+
+        <% if @favorite_questions.count == 0 %>
+          you don't have any favorite yet
+
+        <%end%>
         <% @favorite_questions.each do |question| %>
           <%= render partial: "shared/question_template", locals: {question: question} %>
         <% end %>
       </tbody>
     </table>
+    
+    <%= link_to "Back", :back, class: "btn btn-default" %>
 
 </div>

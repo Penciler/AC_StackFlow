@@ -23,7 +23,11 @@
    <% elsif @user_answer != nil%>
       <div>Total upvotes: <%=@user_answer.answer_upvotes_count%></div>
    <% else %>
+      <% if @user_question != nil%>
       <div>Total upvotes: <%=@user_question.question_upvotes_count%></div>
+      <% else %>
+      Total upvotes: 0
+      <%end%>
    <%end%> 
  
 
