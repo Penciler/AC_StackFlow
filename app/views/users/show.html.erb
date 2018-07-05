@@ -1,22 +1,48 @@
-<h1>show_user_path</h1>
 
 
-  <ul class="list-unstyled list-inline">
-     <li>姓名:<strong><%= @user.name %></strong></li>
-     <li>信箱:<strong><%= @user.email  %></strong></li>
-     <li>公司:<strong><%= @user.company %></strong></li>
-     <li>職稱:<strong><%= @user.title %></strong></li>
-     <li>個人網站連結:<strong><%= @user.website %></strong></li>
-     <li>Twitter 連結:<strong><%=  @user.twitter %></strong></li>
-     <li>GitHub 連結:<strong><%=  @user.github %></strong></li>
+<div class="container">
+
+<h2><%= @user.name %></h2>
+  <h3> <%= @user.title %> from <%= @user.company %></h3>
+
+  <ul class="list-unstyled">
+     <li>信箱<strong><%= @user.email  %></strong></li>
+     <li>個人網站連結<strong><%= @user.website %></strong></li>
+     <li>Twitter 連結<strong><%=  @user.twitter %></strong></li>
+     <li>GitHub 連結<strong><%=  @user.github %></strong></li>
    </ul>
 
    <div>Question count: <%=@user.questions.count%></div>
    <div>Answer count: <%=@user.answers.count%></div>
 
    <%if @user_answer != nil %>
-   		<div>Answer with the most upvote: <%=@user_answer.upvotes_count%></div>
+   		<div>Answer with the most upvote: <%=@user_answer.answer_upvotes_count%></div>
    <% else %>
    		<div>Answer with the most upvote: 0</div>
    <%end%>
+
+
+  <% if current_user == @user %>
+    <%= link_to('Change Password', edit_user_registration_path) %>
+  <%end%>
+  
+</div>
+   <%if @user_question != nil %>
+      <div>Question with the most upvote: <%=@user_question.question_upvotes_count%></div>
+   <% else %>
+      <div>Question with the most upvote: 0</div>
+   <%end%>
+
+   <%if @user_question != nil && @user_answer != nil %>
+      <div>Total upvotes: <%=@user_question.question_upvotes_count+@user_answer.answer_upvotes_count%></div>
+   <% elsif @user_answer != nil%>
+      <div>Total upvotes: <%=@user_answer.answer_upvotes_count%></div>
+   <% else %>
+      <div>Total upvotes: 0</div>
+   <%end%>  
+
+   <% if @user==current_user %>
+    <div><%= link_to "Edit profile",edit_user_path, class: "btn btn-primary" %></div>
+   <% end %>
+
 

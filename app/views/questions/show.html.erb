@@ -1,4 +1,5 @@
 <div class = "container">
+<<<<<<< HEAD
     <br>
     <h2> Question: </h2>
     <table class="table table-striped">
@@ -16,27 +17,42 @@
           <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
         </div>
       <% end %>
+=======
+
+    <h2> Question </h2>
+      <%= render partial: "shared/question_template", locals: {question: @question} %>      
+
+    <h2> leave a answer </h2>
+    <%= form_for [@question, @answer] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "your answer here...", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+>>>>>>> 57175d7f8ebeb5c53460ea6849243b0de1b465b4
     <% end %>
 
   <div class="row col-md-8">
     <!-- 顯示與問題相關的回答 -->
-    <h2> Answers: </h2>
+    <h2> Answers</h2>
+
     <% @pop_answers.each do |answer| %>
     <div>
-      <h4><%= answer.user.name %></h4>
-      <p><%= simple_format answer.content %></p>
-      <div>upvotes: <%= answer.answer_upvotes.count %></div>
-      <p class="text-muted">
-        <em><%= time_ago_in_words(answer.created_at) + " ago - "   %> </em>
+      <div><%= answer.answer_upvotes.count %> upvotes</div>
       <div><%= link_to "Upvote",answer_upvote_question_answer_path(@question, answer), method: :post, class: "btn btn-primary" %></div>
-
-<!-- 下面if end間為註解 -->
-<% if false %>
-        <% if current_user.admin? %>
-        <%= link_to "Delete", question_answer_path(@question, answer), method: :delete %>
+     
+      <p><%= simple_format answer.content %></p>    
+      <em><%= time_ago_in_words(answer.created_at) + " ago - "   %> by <%= link_to answer.user.name, user_path(answer.user) %> </em>
+      
+        <!-- 下面if end間為註解 -->
+        <% if false %>
+                <% if current_user.admin? %>
+                <%= link_to "Delete", question_answer_path(@question, answer), method: :delete %>
+                <% end %>
         <% end %>
-<% end %>
-      </p>
+    
     </div>
     <hr>
     <% end %>
